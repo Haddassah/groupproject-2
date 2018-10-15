@@ -81,10 +81,12 @@ module.exports = function (app) {
 
   //Get idioms by language
   app.get("/api/idiomsbyLanguage/:langId", function (req, res) {
+
     db.Idiom.findAll({
       where: { LanguageId: parseInt(req.params.langId) }
     })
       .then(function (idioms) {
+        console.log(idioms, "These are the idioms that we are getting back");
         res.status(200).json(idioms);
       })
       .catch(function (err) {

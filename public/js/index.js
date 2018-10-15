@@ -325,6 +325,7 @@ $(document).ready(function () {
       type: "get"
     }).then(
       function (data) {
+        console.log(data, "--------this is the data ");
         data.forEach(function (element) {
           idiomsNames.push(element.origin_idiom)
         });
@@ -466,12 +467,14 @@ $(document).ready(function () {
     });
     // ### get all idioms from specific language - search by language
     languageButton.on("click", function (event) {
+      console.log('-------This is the language button');
       event.preventDefault();
       var languageId = $(this).data("id");
       $.ajax("/api/idiomsbyLanguage/" + languageId, {
         type: "get"
       }).then(
         function (data) {
+          console.log(data, "This is the data that we aregetting back")
           hideAndShow(multiDiv);
           showMutiSearchedIdioms(data)
         }
